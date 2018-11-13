@@ -5,6 +5,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameOverActivity">
+    tools:context=".GameOverActivity"
+    android:orientation="vertical"
+    android:layout_margin="20dp">
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_gravity="center"
+        android:text="GAME OVER"
+        android:textSize="80sp"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:background="#ff0000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Final Score"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3054"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/saveBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Save Score"/>
+    <Button
+        android:id="@+id/againBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Again"
+        android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="High Scores"
+        />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
 
 </LinearLayout>

@@ -1,10 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF">
+        <TextView
+            android:id="@+id/userNameTV"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="UserName"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginLeft="5dp"
+            />
+        <ImageView
+            android:id="@+id/livesIV"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@id/userNameTV"
+            android:src="@drawable/hearticon"
+            />
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/livesIV"
+            android:id="@+id/livesTV"
+            />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/scoreTV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_alignParentRight="true"
+            />
+        <TextView
+            android:id="@+id/lvlTV"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Level: 1"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_toLeftOf="@id/scoreTV"
+            android:layout_marginRight="10dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000"
+            android:layout_below="@id/userNameTV"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gameSpace"
+        android:background="#71004b79"
+        >
+
+    </RelativeLayout>
+</LinearLayout>
