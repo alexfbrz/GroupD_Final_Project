@@ -93,7 +93,7 @@ public class GameActivity extends Activity {
 
 
         newImage(xPos, imgID);
-        timerMill = 5000;
+        timerMill = 50000;
         timerTick = 100;
         moveDist = 20;
         timerMethod();
