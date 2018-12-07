@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,8 @@ public class GameOverActivity extends AppCompatActivity {
     String selectQuerry = "SELECT TOP 5 FROM highSCores";
     TextView confirmed;
     ListView myList;
+
+    CountDownTimer invisibleTimer;
 
     DBHelper myDBHelper;
     SQLiteDatabase db;
@@ -80,11 +83,13 @@ public class GameOverActivity extends AppCompatActivity {
 
                     confirmed.setText("SCORE SAVED!");
                     confirmed.setVisibility(View.VISIBLE);
+                    makeInvisible();
                 }
                 catch (SQLException e)
                 {
                     confirmed.setText("SCORE NOT SAVED!");
                     confirmed.setVisibility(View.VISIBLE);
+                    makeInvisible();
                 }
 
             }
@@ -118,5 +123,23 @@ public class GameOverActivity extends AppCompatActivity {
         myListAdapter = new ArrayAdapter<String>(this, R.layout.list_item, usernameList);
         myList.setAdapter(myListAdapter);
     }
+
+    public void makeInvisible()
+    {
+        invisibleTimer = new CountDownTimer(10000, 5000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                confirmed.setVisibility(View.GONE);
+            }
+        }
+    }
+
+
 
 }
