@@ -30,7 +30,7 @@ public class GameOverActivity extends AppCompatActivity {
     String insertQuery = "";
     String selectQuerry = "SELECT * FROM highScores ORDER BY score DESC LIMIT 5;";
     TextView confirmed, finalscoreTV;
-    ListView myList;
+    ListView myList, myList2;
 
     CountDownTimer invisibleTimer;
 
@@ -40,7 +40,8 @@ public class GameOverActivity extends AppCompatActivity {
     ArrayList<Integer> idList;
     ArrayList<String > usernameList;
     ArrayList<Integer> scoreList;
-    ArrayAdapter myListAdapter;
+    ArrayAdapter myListAdapter, myListAdapter2;
+    ArrayList<String> comboList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,12 @@ public class GameOverActivity extends AppCompatActivity {
         playAgainBtn = findViewById(R.id.againBtn);
         confirmed = findViewById(R.id.confirmed);
         myList = findViewById(R.id.myList);
+        myList2 = findViewById(R.id.myList2);
         finalscoreTV = findViewById((R.id.finalscoreTv));
 
-        finalscoreTV.setText(String.valueOf(score));
+        final String scoreData = username + "         " + String.valueOf(score);
+
+        finalscoreTV.setText(scoreData);
 
         sendToGame = new Intent(this, GameActivity.class);
 
@@ -84,10 +88,13 @@ public class GameOverActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String sScore = Integer.toString(score);
+
                 try
                 {
-                    insertQuery = "INSERT  INTO highScores (username, score) " +
-                            "VALUES(" + "'" + username + "'" + "," + score + "," + ");";
+                    insertQuery = "INSERT INTO highScores (username, score) " +
+                            "VALUES(" + "'" + username + "'" + "," + score + ");";
+                    db.execSQL(insertQuery);
 
                     confirmed.setText("SCORE SAVED!");
                     confirmed.setVisibility(View.VISIBLE);
@@ -135,12 +142,19 @@ public class GameOverActivity extends AppCompatActivity {
 
             }while (result.moveToNext());
 
+
+
         } else {
             //no results
 
         }
+
+
         myListAdapter = new ArrayAdapter<String>(this, R.layout.list_item, usernameList);
         myList.setAdapter(myListAdapter);
+
+        myListAdapter2 = new ArrayAdapter<Integer>(this, R.layout.list_item, scoreList);
+        myList2.setAdapter(myListAdapter2);
     }
 
     public void makeInvisible()
