@@ -46,9 +46,7 @@ public class LoginActivity extends Activity {
                     LoginActivity.this.startActivity(toGame);
                 }
 
-                InputMethodManager imm = (InputMethodManager)LoginActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                if(imm != null)
-                    imm.toggleSoftInput(InputMethodManager.HIDE_NOT_ALWAYS, 0);
+                
             }
         });
 
