@@ -1,9 +1,11 @@
 package com.example.kendra.groupd_finalproject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,6 +45,10 @@ public class LoginActivity extends Activity {
                     toGame.putExtra("username", username);
                     LoginActivity.this.startActivity(toGame);
                 }
+
+                InputMethodManager imm = (InputMethodManager)LoginActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                if(imm != null)
+                    imm.toggleSoftInput(InputMethodManager.HIDE_NOT_ALWAYS, 0);
             }
         });
 
