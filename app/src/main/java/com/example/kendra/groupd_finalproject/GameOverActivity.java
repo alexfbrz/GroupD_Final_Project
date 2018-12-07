@@ -10,17 +10,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.example.kendra.groupd_finalproject.DBHelper;
+
 import java.io.IOException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class GameOverActivity extends AppCompatActivity {
 
-    Intent myIntent4;
+    Intent fromGame;
 
     String username;
     int score;
@@ -45,10 +44,10 @@ public class GameOverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
 
-        myIntent4 = getIntent();
-        username = myIntent4.getStringExtra("username");
-        score = myIntent4.getIntExtra("score",0);
-        level = myIntent4.getIntExtra("level",0);
+        fromGame = getIntent();
+        username = fromGame.getStringExtra("username");
+        score = fromGame.getIntExtra("score",0);
+        level = fromGame.getIntExtra("level",0);
         saveBtn = findViewById(R.id.saveBtn);
         confirmed = findViewById(R.id.confirmed);
         myList = findViewById(R.id.myList);
