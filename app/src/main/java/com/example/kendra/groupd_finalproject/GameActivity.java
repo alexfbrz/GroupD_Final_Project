@@ -33,6 +33,7 @@ public class GameActivity extends Activity {
 
     Intent fromLogin;
     Intent toGameOver;
+    Intent fromGameOver;
 
     int lives =3;
     int score =0;
@@ -71,8 +72,15 @@ public class GameActivity extends Activity {
         dino4.setVisibility(View.GONE);
 
         fromLogin = getIntent();
-        username = fromLogin.getStringExtra("username");
-        usernameTV.setText(username);
+        fromGameOver = getIntent();
+        if (fromLogin.getStringExtra("username") != null) {
+            username = fromLogin.getStringExtra("username");
+            usernameTV.setText(username);
+        } else {
+            username = fromGameOver.getStringExtra("username");
+            usernameTV.setText(username);
+        }
+
 
         livesTV.setText(Integer.toString(lives));
 
