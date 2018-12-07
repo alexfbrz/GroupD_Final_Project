@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
                     LoginActivity.this.startActivity(toGame);
                 }
 
-                
+
             }
         });
 
