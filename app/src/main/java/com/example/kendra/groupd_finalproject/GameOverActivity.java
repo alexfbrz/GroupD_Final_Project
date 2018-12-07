@@ -40,7 +40,8 @@ public class GameOverActivity extends AppCompatActivity {
     ArrayList<Integer> idList;
     ArrayList<String > usernameList;
     ArrayList<Integer> scoreList;
-    ArrayAdapter myListAdapter;
+    ArrayAdapter myListAdapter, myListAdapter2;
+    ArrayList<String> comboList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,9 @@ public class GameOverActivity extends AppCompatActivity {
         myList = findViewById(R.id.myList);
         finalscoreTV = findViewById((R.id.finalscoreTv));
 
-        finalscoreTV.setText(String.valueOf(score));
+        final String scoreData = username + "   " + String.valueOf(score);
+
+        finalscoreTV.setText(scoreData);
 
         sendToGame = new Intent(this, GameActivity.class);
 
@@ -84,10 +87,12 @@ public class GameOverActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String sScore = Integer.toString(score);
+
                 try
                 {
-                    insertQuery = "INSERT  INTO highScores (username, score) " +
-                            "VALUES(" + "'" + username + "'" + "," + score + "," + ");";
+                    insertQuery = "INSERT INTO highScores (username, score) " +
+                            "VALUES(" + "'" + username + "'" + "," + "'" + sScore +"'" + "," + ");";
 
                     confirmed.setText("SCORE SAVED!");
                     confirmed.setVisibility(View.VISIBLE);
@@ -133,12 +138,18 @@ public class GameOverActivity extends AppCompatActivity {
                 usernameList.add(result.getString(1));
                 scoreList.add(result.getInt(2));
 
+
+
             }while (result.moveToNext());
+
+
 
         } else {
             //no results
 
         }
+
+
         myListAdapter = new ArrayAdapter<String>(this, R.layout.list_item, usernameList);
         myList.setAdapter(myListAdapter);
     }

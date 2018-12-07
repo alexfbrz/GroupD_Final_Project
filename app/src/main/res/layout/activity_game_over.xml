@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Final Score"
+        android:text=" Username Final Score"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_margin="10dp"/>
@@ -47,9 +47,9 @@
         android:layout_height="wrap_content">
     <Button
         android:id="@+id/saveBtn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Save Score"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Score"/>
     <Button
         android:id="@+id/againBtn"
         android:layout_width="wrap_content"
@@ -61,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="18sp"
         android:text="High Scores"
         />
     <ListView
