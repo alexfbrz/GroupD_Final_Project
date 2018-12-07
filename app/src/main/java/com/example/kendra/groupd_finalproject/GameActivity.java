@@ -92,15 +92,11 @@ public class GameActivity extends Activity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.cancel();
-                image.setVisibility(View.GONE);
-                score += 1;
-                scoreTV.setText("Score: " + Integer.toString(score));
-                changeImg();
-                timerMethod();
+                success();
                 }
 
         });
+
 
 
 
@@ -138,7 +134,7 @@ public class GameActivity extends Activity {
                 {
                     timer.cancel();
                     image.setVisibility(View.GONE);
-                    failure();
+                    failureCheck();
                 }
 
             }
@@ -152,11 +148,31 @@ public class GameActivity extends Activity {
         }.start();
     }
 
-    public void failure() {
+    public void success() {
+        timer.cancel();
+        image.setVisibility(View.GONE);
+        score += 1;
+        scoreTV.setText("Score: " + Integer.toString(score));
+        changeImg();
+        timerMethod();
+        levelChange();
+    }
+
+    public void levelChange() {
+        switch (score) {
+            case 15:
+                level =2;
+                lvlTV.setText(String.valueOf(level));
+                break;
+        }
+    }
+
+    public void failureCheck() {
         lives -=1;
         livesTV.setText(String.valueOf(lives));
         changeImg();
         timerMethod();
+        showDinos();
         if (lives == 0) {
 
             toGameOver.putExtra("username", username);
@@ -165,6 +181,46 @@ public class GameActivity extends Activity {
 
             GameActivity.this.startActivity(toGameOver);
 
+        }
+    }
+
+    public void showDinos() {
+        switch (lives) {
+            case 5:
+                dino1.setVisibility(View.VISIBLE);
+                dino2.setVisibility(View.VISIBLE);
+                dino3.setVisibility(View.VISIBLE);
+                dino4.setVisibility(View.VISIBLE);
+                dino5.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                dino1.setVisibility(View.VISIBLE);
+                dino2.setVisibility(View.GONE);
+                dino3.setVisibility(View.VISIBLE);
+                dino4.setVisibility(View.VISIBLE);
+                dino5.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                dino1.setVisibility(View.VISIBLE);
+                dino2.setVisibility(View.GONE);
+                dino3.setVisibility(View.VISIBLE);
+                dino4.setVisibility(View.GONE);
+                dino5.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                dino1.setVisibility(View.VISIBLE);
+                dino2.setVisibility(View.GONE);
+                dino3.setVisibility(View.GONE);
+                dino4.setVisibility(View.GONE);
+                dino5.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                dino1.setVisibility(View.VISIBLE);
+                dino2.setVisibility(View.GONE);
+                dino3.setVisibility(View.GONE);
+                dino4.setVisibility(View.GONE);
+                dino5.setVisibility(View.GONE);
+                break;
         }
     }
 
