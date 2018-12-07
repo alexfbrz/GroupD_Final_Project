@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class GameActivity extends Activity {
     TextView livesTV;
     TextView scoreTV;
     TextView lvlTV;
+    TextView levelChange;
     RelativeLayout gameSpace;
 
     CountDownTimer timer;
@@ -41,6 +43,10 @@ public class GameActivity extends Activity {
     int xPos =1;
     int imgInd =0;
     int imgID = 100;
+
+    int timerMill;
+    int timerTick;
+    int moveDist;
     String username;
 
 
@@ -62,6 +68,7 @@ public class GameActivity extends Activity {
         gameSpace = findViewById(R.id.gameSpace);
         toGameOver = new Intent(this, GameOverActivity.class);
 
+        levelChange = findViewById(R.id.levelchange);
         dino1 = findViewById(R.id.dino1);
         dino2 = findViewById(R.id.dino2);
         dino3 = findViewById(R.id.dino3);
@@ -86,6 +93,9 @@ public class GameActivity extends Activity {
 
 
         newImage(xPos, imgID);
+        timerMill = 5000;
+        timerTick = 100;
+        moveDist = 20;
         timerMethod();
 
 
@@ -125,11 +135,11 @@ public class GameActivity extends Activity {
     }
 
     public void timerMethod() {
-        timer = new CountDownTimer(3000,50) {
+        timer = new CountDownTimer(timerMill,timerTick) {
             @Override
             public void onTick(long millisUntilFinished) {
                 image.setVisibility(View.VISIBLE);
-                image.setY(image.getY() + 50);
+                image.setY(image.getY() + moveDist);
                 if (image.getY() >= gameSpace.getHeight())
                 {
                     timer.cancel();
@@ -159,11 +169,48 @@ public class GameActivity extends Activity {
     }
 
     public void levelChange() {
-        switch (score) {
-            case 15:
-                level =2;
-                lvlTV.setText(String.valueOf(level));
-                break;
+        if (score%15 ==0) {
+            level += 1;
+            lvlTV.setText("Level " +String.valueOf(level));
+            timer.cancel();
+            levelChange.setText("LEVEL " + String.valueOf(level));
+            levelChange.setVisibility(View.VISIBLE);
+            CountDownTimer lvlTimer = new CountDownTimer(2000, 10) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    levelChange.setVisibility(View.GONE);
+
+                }
+            }.start();
+            addLives();
+            speedUp();
+            timerMethod();
+
+
+        }
+    }
+
+    public void addLives() {
+        if (lives < 5) {
+            if (level % 4 == 0) {
+                lives += 1;
+                livesTV.setText(String.valueOf(lives));
+                showDinos();
+            }
+        }
+    }
+
+    public void speedUp() {
+        if (timerTick > 20) {
+            if (level%2 ==0) {
+                timerTick -= 20;
+                moveDist += 5;
+            }
         }
     }
 
