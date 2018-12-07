@@ -116,7 +116,7 @@ public class GameActivity extends Activity {
 
     public void newImage(int pos, int id) {
         image = new ImageView(this);
-        image.setLayoutParams(new RelativeLayout.LayoutParams(200,200));
+        image.setLayoutParams(new RelativeLayout.LayoutParams(300,300));
         image.setId(id);
         image.setY(0);
         image.setX(pos * 100);
