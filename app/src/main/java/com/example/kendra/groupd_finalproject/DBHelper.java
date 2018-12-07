@@ -24,7 +24,7 @@ import java.io.OutputStream;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "/data/data/com.example.kendra.groupd_finalproject";
+    private static String DB_PATH = "/data/data/com.example.kendra.groupd_finalproject/databases/";
     private static String DB_NAME = "groupD_final";
     private SQLiteDatabase db;
     private Context myContext;

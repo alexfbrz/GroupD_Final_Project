@@ -28,7 +28,7 @@ public class GameOverActivity extends AppCompatActivity {
     Button saveBtn;
     Statement statement;
     String insertQuery = "";
-    String selectQuerry = "SELECT TOP 5 FROM highSCores";
+    String selectQuerry = "SELECT * FROM highScores ORDER BY score DESC LIMIT 5;";
     TextView confirmed;
     ListView myList;
 
@@ -137,7 +137,7 @@ public class GameOverActivity extends AppCompatActivity {
 
                 confirmed.setVisibility(View.GONE);
             }
-        }
+        };
     }
 
 
