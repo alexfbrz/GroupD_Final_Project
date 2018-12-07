@@ -45,6 +45,7 @@ public class GameActivity extends Activity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,7 @@ public class GameActivity extends Activity {
         scoreTV = findViewById(R.id.scoreTV);
         lvlTV = findViewById(R.id.lvlTV);
         gameSpace = findViewById(R.id.gameSpace);
+        toGameOver = new Intent(this, GameOverActivity.class);
 
         dino1 = findViewById(R.id.dino1);
         dino2 = findViewById(R.id.dino2);
@@ -148,7 +150,7 @@ public class GameActivity extends Activity {
         changeImg();
         timerMethod();
         if (lives == 0) {
-            toGameOver = new Intent(this, GameOverActivity.class);
+
             toGameOver.putExtra("username", username);
             toGameOver.putExtra("score", score);
             toGameOver.putExtra("level", level);
