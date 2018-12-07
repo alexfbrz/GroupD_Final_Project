@@ -20,12 +20,12 @@ import java.util.ArrayList;
 
 public class GameOverActivity extends AppCompatActivity {
 
-    Intent fromGame;
+    Intent fromGame, sendToGame;
 
     String username;
     int score;
     int level;
-    Button saveBtn;
+    Button saveBtn, playAgainBtn;
     Statement statement;
     String insertQuery = "";
     String selectQuerry = "SELECT * FROM highScores ORDER BY score DESC LIMIT 5;";
@@ -52,11 +52,14 @@ public class GameOverActivity extends AppCompatActivity {
         score = fromGame.getIntExtra("score",0);
         level = fromGame.getIntExtra("level",0);
         saveBtn = findViewById(R.id.saveBtn);
+        playAgainBtn = findViewById(R.id.againBtn);
         confirmed = findViewById(R.id.confirmed);
         myList = findViewById(R.id.myList);
         finalscoreTV = findViewById((R.id.finalscoreTv));
 
         finalscoreTV.setText(String.valueOf(score));
+
+        sendToGame = new Intent(this, GameActivity.class);
 
         myDBHelper = new DBHelper(this);
 
@@ -99,6 +102,17 @@ public class GameOverActivity extends AppCompatActivity {
 
             }
         });
+
+        playAgainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sendToGame.putExtra("username", username);
+
+                GameOverActivity.this.startActivity(sendToGame);
+            }
+        });
+
     }
 
     public void getResult(String q) {
