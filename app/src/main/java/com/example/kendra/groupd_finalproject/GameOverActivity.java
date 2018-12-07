@@ -28,7 +28,7 @@ public class GameOverActivity extends AppCompatActivity {
     Button saveBtn, playAgainBtn;
     Statement statement;
     String insertQuery = "";
-    String selectQuerry = "SELECT username FROM highScores ORDER BY score DESC LIMIT 5;";
+    String selectQuerry = "SELECT * FROM highScores ORDER BY score DESC LIMIT 5;";
     TextView confirmed, finalscoreTV;
     ListView myList;
 
