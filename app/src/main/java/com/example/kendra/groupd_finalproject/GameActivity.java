@@ -13,6 +13,12 @@ import java.util.Random;
 
 public class GameActivity extends Activity {
 
+    ImageView dino1;
+    ImageView dino2;
+    ImageView dino3;
+    ImageView dino4;
+    ImageView dino5;
+
     TextView usernameTV;
     TextView livesTV;
     TextView scoreTV;
@@ -35,17 +41,14 @@ public class GameActivity extends Activity {
     int imgInd =0;
     int imgID = 100;
 
-    int[] imgArr ={R.drawable.hearticon, R.drawable.dino};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
 
         randNum = new Random();
 
@@ -55,28 +58,25 @@ public class GameActivity extends Activity {
         lvlTV = findViewById(R.id.lvlTV);
         gameSpace = findViewById(R.id.gameSpace);
 
+        dino1 = findViewById(R.id.dino1);
+        dino2 = findViewById(R.id.dino2);
+        dino3 = findViewById(R.id.dino3);
+        dino4 = findViewById(R.id.dino4);
+        dino5 = findViewById(R.id.dino5);
+
+        dino2.setVisibility(View.GONE);
+        dino4.setVisibility(View.GONE);
+
         myIntent2 = getIntent();
         String username = myIntent2.getStringExtra("username");
         usernameTV.setText(username);
 
         livesTV.setText(Integer.toString(lives));
 
-        newImage(imgArr[imgInd], xPos, imgID);
 
-        timer = new CountDownTimer(3000,50) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                image.setVisibility(View.VISIBLE);
-                image.setY(image.getY() +50);
-            }
+        newImage(xPos, imgID);
+        timerMethod();
 
-            @Override
-            public void onFinish() {
-                changeImg();
-                timer.start();
-
-            }
-        }.start();
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,25 +86,15 @@ public class GameActivity extends Activity {
                 score += 1;
                 scoreTV.setText("Score: " + Integer.toString(score));
                 changeImg();
-                timer = new CountDownTimer(3000,50) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        image.setVisibility(View.VISIBLE);
-                        image.setY(image.getY() +50);
-                    }
+                timerMethod();
+                }
 
-                    @Override
-                    public void onFinish() {
-                        changeImg();
-                        timer.start();
-
-                    }
-                }.start();
-
-            }
         });
 
-        if (lives ==0) {
+
+
+
+        if (lives <= 0) {
             myIntent3 = new Intent(this, GameOverActivity.class);
             myIntent3.putExtra("username", username);
             myIntent3.putExtra("score", score);
@@ -116,23 +106,42 @@ public class GameActivity extends Activity {
 
     }
 
-    public void newImage(int img, int pos, int id) {
+    public void newImage(int pos, int id) {
         image = new ImageView(this);
         image.setLayoutParams(new RelativeLayout.LayoutParams(200,200));
         image.setId(id);
         image.setY(0);
         image.setX(pos * 100);
-        image.setImageResource(img);
+        image.setImageResource(R.drawable.meteor);
         gameSpace.addView(image);
     }
 
     public void changeImg() {
-        int totalX= (gameSpace.getWidth())-200;
+        randNum = new Random();
+        int totalX= (gameSpace.getWidth()-200);
         imgInd = randNum.nextInt(2);
         xPos = randNum.nextInt(totalX);
-        image.setImageResource(imgArr[imgInd]);
+        image.setImageResource(R.drawable.meteor);
         image.setY(0);
         image.setX(xPos);
+    }
+
+    public void timerMethod() {
+        timer = new CountDownTimer(3000,50) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                image.setVisibility(View.VISIBLE);
+                image.setY(image.getY() + 50);
+
+            }
+
+            @Override
+            public void onFinish() {
+                changeImg();
+                timer.start();
+
+            }
+        }.start();
     }
 
 

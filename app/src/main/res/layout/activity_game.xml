@@ -70,6 +70,59 @@
         android:id="@+id/gameSpace"
         android:background="#71004b79"
         >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/dino1"
+            android:src="@drawable/dino"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/dino1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/dino2"
+            android:src="@drawable/dinotwo"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/dino2"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/dino3"
+            android:src="@drawable/dino"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/dino3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/dino4"
+            android:src="@drawable/dinotwo"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/dino4"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/dino5"
+            android:src="@drawable/dino"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#482f00"
+            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 </LinearLayout>
