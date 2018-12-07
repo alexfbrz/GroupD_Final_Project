@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Username Final Score"
+        android:text=" Username      Final Score"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_margin="10dp"/>
@@ -64,13 +64,29 @@
         android:textSize="18sp"
         android:text="High Scores"
         />
-    <ListView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:id="@+id/myList">
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
 
-    </ListView>
+        <ListView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/myList">
 
+        </ListView>
+        <ListView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/myList2">
+
+        </ListView>
+
+
+    </LinearLayout>
 
 </LinearLayout>
