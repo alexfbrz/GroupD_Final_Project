@@ -31,8 +31,8 @@ public class GameActivity extends Activity {
 
     ImageView image;
 
-    Intent myIntent2;
-    Intent myIntent3;
+    Intent fromLogin;
+    Intent toGameOver;
 
     int lives =3;
     int score =0;
@@ -40,6 +40,7 @@ public class GameActivity extends Activity {
     int xPos =1;
     int imgInd =0;
     int imgID = 100;
+    String username;
 
 
 
@@ -67,8 +68,8 @@ public class GameActivity extends Activity {
         dino2.setVisibility(View.GONE);
         dino4.setVisibility(View.GONE);
 
-        myIntent2 = getIntent();
-        String username = myIntent2.getStringExtra("username");
+        fromLogin = getIntent();
+        username = fromLogin.getStringExtra("username");
         usernameTV.setText(username);
 
         livesTV.setText(Integer.toString(lives));
@@ -94,15 +95,6 @@ public class GameActivity extends Activity {
 
 
 
-        if (lives <= 0) {
-            myIntent3 = new Intent(this, GameOverActivity.class);
-            myIntent3.putExtra("username", username);
-            myIntent3.putExtra("score", score);
-            myIntent3.putExtra("level", level);
-
-            GameActivity.this.startActivity(myIntent3);
-
-        }
 
     }
 
@@ -132,6 +124,12 @@ public class GameActivity extends Activity {
             public void onTick(long millisUntilFinished) {
                 image.setVisibility(View.VISIBLE);
                 image.setY(image.getY() + 50);
+                if (image.getY() >= gameSpace.getHeight())
+                {
+                    timer.cancel();
+                    image.setVisibility(View.GONE);
+                    failure();
+                }
 
             }
 
@@ -144,6 +142,21 @@ public class GameActivity extends Activity {
         }.start();
     }
 
+    public void failure() {
+        lives -=1;
+        livesTV.setText(String.valueOf(lives));
+        changeImg();
+        timerMethod();
+        if (lives == 0) {
+            toGameOver = new Intent(this, GameOverActivity.class);
+            toGameOver.putExtra("username", username);
+            toGameOver.putExtra("score", score);
+            toGameOver.putExtra("level", level);
+
+            GameActivity.this.startActivity(toGameOver);
+
+        }
+    }
 
 
     @Override
