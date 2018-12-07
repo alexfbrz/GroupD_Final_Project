@@ -29,7 +29,7 @@ public class GameOverActivity extends AppCompatActivity {
     Statement statement;
     String insertQuery = "";
     String selectQuerry = "SELECT * FROM highScores ORDER BY score DESC LIMIT 5;";
-    TextView confirmed;
+    TextView confirmed, finalscoreTV;
     ListView myList;
 
     CountDownTimer invisibleTimer;
@@ -54,6 +54,9 @@ public class GameOverActivity extends AppCompatActivity {
         saveBtn = findViewById(R.id.saveBtn);
         confirmed = findViewById(R.id.confirmed);
         myList = findViewById(R.id.myList);
+        finalscoreTV = findViewById((R.id.finalscoreTv));
+
+        finalscoreTV.setText(String.valueOf(score));
 
         myDBHelper = new DBHelper(this);
 
@@ -72,13 +75,15 @@ public class GameOverActivity extends AppCompatActivity {
         getResult(selectQuerry);
 
 
+
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 try
                 {
-                    insertQuery = "INSERT  INTO highScores (username, scores) " +
+                    insertQuery = "INSERT  INTO highScores (username, score) " +
                             "VALUES(" + "'" + username + "'" + "," + score + "," + ");";
 
                     confirmed.setText("SCORE SAVED!");
