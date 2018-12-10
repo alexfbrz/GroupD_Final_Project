@@ -41,7 +41,6 @@ public class GameOverActivity extends AppCompatActivity {
     ArrayList<String > usernameList;
     ArrayList<Integer> scoreList;
     ArrayAdapter myListAdapter, myListAdapter2;
-    ArrayList<String> comboList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
