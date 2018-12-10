@@ -15,17 +15,16 @@
         android:layout_height="225sp"
         android:src="@drawable/gameover"
         android:layout_gravity="center"
-        android:layout_marginBottom="5sp"
-        />
+        android:layout_marginBottom="5sp" />
     <TextView
-    android:layout_width="225sp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="GAME OVER"
-    android:textSize="25sp"
-    android:textAlignment="center"
-    android:textColor="#000"
-    android:background="#ff0000"/>
+        android:layout_width="225sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="GAME OVER"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:background="#ff0000"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

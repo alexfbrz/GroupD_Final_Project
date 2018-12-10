@@ -140,7 +140,6 @@ public class GameOverActivity extends AppCompatActivity {
             }while (result.moveToNext());
 
         }
-
         myListAdapter = new ArrayAdapter<String>(this, R.layout.list_item, usernameList);
         myList.setAdapter(myListAdapter);
 

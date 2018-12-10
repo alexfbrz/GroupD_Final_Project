@@ -91,13 +91,12 @@ public class GameActivity extends Activity {
 
         livesTV.setText(Integer.toString(lives));
 
-
-        newImage(xPos, imgID);
         timerMill = 50000;
         timerTick = 100;
         moveDist = 20;
-        timerMethod();
 
+        newImage(xPos, imgID);
+        timerMethod();
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,9 +150,6 @@ public class GameActivity extends Activity {
 
             @Override
             public void onFinish() {
-                changeImg();
-                timer.start();
-
             }
         }.start();
     }
@@ -172,25 +168,19 @@ public class GameActivity extends Activity {
         if (score%15 ==0) {
             level += 1;
             lvlTV.setText("Level: " +String.valueOf(level));
-            timer.cancel();
             levelChange.setText("LEVEL " + String.valueOf(level));
             levelChange.setVisibility(View.VISIBLE);
             CountDownTimer lvlTimer = new CountDownTimer(2000, 10) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-
                 }
-
                 @Override
                 public void onFinish() {
                     levelChange.setVisibility(View.GONE);
-
                 }
             }.start();
             addLives();
             speedUp();
-            timerMethod();
-
 
         }
     }
