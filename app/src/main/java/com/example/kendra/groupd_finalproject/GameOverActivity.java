@@ -88,8 +88,6 @@ public class GameOverActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String sScore = Integer.toString(score);
-
                 try
                 {
                     insertQuery = "INSERT INTO highScores (username, score) " +
@@ -106,7 +104,6 @@ public class GameOverActivity extends AppCompatActivity {
                     confirmed.setVisibility(View.VISIBLE);
                     makeInvisible();
                 }
-
             }
         });
 
@@ -142,13 +139,7 @@ public class GameOverActivity extends AppCompatActivity {
 
             }while (result.moveToNext());
 
-
-
-        } else {
-            //no results
-
         }
-
 
         myListAdapter = new ArrayAdapter<String>(this, R.layout.list_item, usernameList);
         myList.setAdapter(myListAdapter);
@@ -159,20 +150,16 @@ public class GameOverActivity extends AppCompatActivity {
 
     public void makeInvisible()
     {
-        invisibleTimer = new CountDownTimer(10000, 5000) {
+        invisibleTimer = new CountDownTimer(2000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
             }
-
             @Override
             public void onFinish() {
-
                 confirmed.setVisibility(View.GONE);
             }
-        };
+        }.start();
     }
-
-
 
 }
