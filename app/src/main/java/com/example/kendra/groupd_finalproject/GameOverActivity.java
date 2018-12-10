@@ -162,4 +162,8 @@ public class GameOverActivity extends AppCompatActivity {
         }.start();
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }

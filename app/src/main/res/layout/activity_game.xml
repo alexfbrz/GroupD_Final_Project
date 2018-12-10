@@ -25,27 +25,19 @@
             android:id="@+id/livesIV"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_toRightOf="@id/userNameTV"
+            android:layout_toLeftOf="@id/livesTV"
+            android:layout_marginRight="2sp"
             android:src="@drawable/hearticon"
             />
         <TextView
-            android:layout_width="25dp"
+            android:layout_width="15sp"
             android:layout_height="wrap_content"
             android:text="3"
             android:textSize="18sp"
             android:textColor="#000"
-            android:layout_toRightOf="@id/livesIV"
+            android:layout_toLeftOf="@id/lvlTV"
+            android:layout_marginRight="5sp"
             android:id="@+id/livesTV"
-            />
-
-        <TextView
-            android:id="@+id/scoreTV"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Score: 0"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:layout_alignParentRight="true"
             />
         <TextView
             android:id="@+id/lvlTV"
@@ -55,8 +47,18 @@
             android:textSize="18sp"
             android:textColor="#000"
             android:layout_toLeftOf="@id/scoreTV"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             />
+        <TextView
+            android:id="@+id/scoreTV"
+            android:layout_width="90sp"
+            android:layout_height="wrap_content"
+            android:text="Score: 0"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_alignParentRight="true"
+            />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -68,14 +70,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/gameSpace"
-        android:background="#71004b79"
+        android:background="@drawable/sky"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LEVEL #"
             android:textSize="30dp"
-            android:textColor="#73ff00"
+            android:textColor="#6ccb08"
             android:textStyle="bold"
             android:textAlignment="center"
             android:layout_centerInParent="true"

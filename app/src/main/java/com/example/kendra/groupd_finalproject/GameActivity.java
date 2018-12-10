@@ -171,7 +171,7 @@ public class GameActivity extends Activity {
     public void levelChange() {
         if (score%15 ==0) {
             level += 1;
-            lvlTV.setText("Level " +String.valueOf(level));
+            lvlTV.setText("Level: " +String.valueOf(level));
             timer.cancel();
             levelChange.setText("LEVEL " + String.valueOf(level));
             levelChange.setVisibility(View.VISIBLE);
@@ -272,9 +272,9 @@ public class GameActivity extends Activity {
     }
 
 
+
     @Override
     public void onBackPressed() {
     }
-
 
 }

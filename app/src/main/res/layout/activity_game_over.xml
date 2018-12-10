@@ -7,49 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".GameOverActivity"
     android:orientation="vertical"
-    android:layout_margin="20dp">
+    android:background="#ace7f3"
+    >
 
-
-    
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_gravity="center"
-        android:text="GAME OVER"
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:background="#ff0000"/>
     <ImageView
-        android:layout_width="325dp"
-        android:layout_height="225dp"
+        android:layout_width="325sp"
+        android:layout_height="225sp"
         android:src="@drawable/gameover"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5sp"
         />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="#73ff00"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"
-        android:id="@+id/confirmed"/>
+    android:layout_width="225sp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="GAME OVER"
+    android:textSize="25sp"
+    android:textAlignment="center"
+    android:textColor="#000"
+    android:background="#ff0000"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Username      Final Score"
+        android:text="Username      Final Score"
         android:textSize="20sp"
         android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+        android:layout_marginTop="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="30sp"
         android:layout_gravity="center"
+        android:layout_marginBottom="10sp"
         android:id="@+id/finalscoreTv"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="#6ccb08"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:id="@+id/confirmed"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -57,13 +59,18 @@
         android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Score"/>
+        android:text="Save Score"
+        android:background="#99d5b6"
+        android:layout_marginLeft="50sp"/>
     <Button
         android:id="@+id/againBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play Again"
-        android:layout_alignParentRight="true"/>
+        android:background="#99d5b6"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50sp"/>
+
     </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -76,7 +83,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        >
 
         <ListView
             android:layout_width="150dp"
