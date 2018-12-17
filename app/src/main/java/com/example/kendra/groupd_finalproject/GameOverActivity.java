@@ -13,15 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.io.IOException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class GameOverActivity extends AppCompatActivity {
 
+    //Variable declaration
     Intent fromGame, sendToGame;
-
     String username;
     int score;
     int level;
@@ -31,12 +30,9 @@ public class GameOverActivity extends AppCompatActivity {
     String selectQuerry = "SELECT * FROM highScores ORDER BY score DESC LIMIT 5;";
     TextView confirmed, finalscoreTV;
     ListView myList, myList2;
-
     CountDownTimer invisibleTimer;
-
     DBHelper myDBHelper;
     SQLiteDatabase db;
-
     ArrayList<Integer> idList;
     ArrayList<String > usernameList;
     ArrayList<Integer> scoreList;
@@ -59,11 +55,11 @@ public class GameOverActivity extends AppCompatActivity {
         finalscoreTV = findViewById((R.id.finalscoreTv));
 
         final String scoreData = username + "         " + String.valueOf(score);
-
         finalscoreTV.setText(scoreData);
 
         sendToGame = new Intent(this, GameActivity.class);
 
+        //Opens a database to save and get scores from
         myDBHelper = new DBHelper(this);
 
         try {
@@ -80,13 +76,12 @@ public class GameOverActivity extends AppCompatActivity {
 
         getResult(selectQuerry);
 
-
-
-
+        //On click listener for our button to save your score
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //Try catch logic for our SQL statement to write your score to the database
                 try
                 {
                     insertQuery = "INSERT INTO highScores (username, score) " +
@@ -106,6 +101,7 @@ public class GameOverActivity extends AppCompatActivity {
             }
         });
 
+        //Listener for our play  again button to restart the game from the game over screen
         playAgainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,9 +111,9 @@ public class GameOverActivity extends AppCompatActivity {
                 GameOverActivity.this.startActivity(sendToGame);
             }
         });
-
     }
 
+    //Gets the results from our database select query to fill our high scores list
     public void getResult(String q) {
         Cursor result = db.rawQuery(q, null);
         result.moveToFirst();
@@ -130,7 +126,6 @@ public class GameOverActivity extends AppCompatActivity {
 
         if (count >= 1){
             //I have results
-
             do{
                 idList.add(result.getInt(0));
                 usernameList.add(result.getString(1));
@@ -146,6 +141,7 @@ public class GameOverActivity extends AppCompatActivity {
         myList2.setAdapter(myListAdapter2);
     }
 
+    //Makes the save score or error message invisible after popping up
     public void makeInvisible()
     {
         invisibleTimer = new CountDownTimer(2000, 1000) {
@@ -163,5 +159,4 @@ public class GameOverActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
-
 }
