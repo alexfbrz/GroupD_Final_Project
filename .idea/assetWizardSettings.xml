@@ -16,11 +16,28 @@
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="98" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="000000" />
                                       <entry key="backgroundImage" value="C:\Program Files\Android\Android Studio\plugins\android\lib\templates\gradle-projects\NewAndroidModule\root\res\mipmap-hdpi\ic_launcher.png" />
                                       <entry key="backgroundLayerName" value="icon_background" />
-                                      <entry key="foregroundImage" value="C:\Program Files\Android\Android Studio\plugins\android\lib\templates\gradle-projects\NewAndroidModule\root\res\mipmap-hdpi\ic_launcher.png" />
+                                      <entry key="foregroundImage" value="E:\School\CPS251\AndroidStudioProjects\GroupD_FinalProject\app\src\main\res\mipmap-hdpi\ic_launcher.png" />
                                       <entry key="foregroundLayerName" value="icon_foreground" />
                                     </map>
                                   </option>
