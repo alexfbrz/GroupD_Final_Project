@@ -2,6 +2,7 @@ package com.example.kendra.groupd_finalproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.view.View;
@@ -48,7 +49,7 @@ public class GameActivity extends Activity {
     int timerTick;
     int moveDist;
     String username;
-
+    SharedPreferences savedValues;
 
 
 
@@ -105,6 +106,8 @@ public class GameActivity extends Activity {
                 }
 
         });
+
+        savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
 
 
 
@@ -215,6 +218,7 @@ public class GameActivity extends Activity {
             toGameOver.putExtra("username", username);
             toGameOver.putExtra("score", score);
             toGameOver.putExtra("level", level);
+            timer.cancel();
 
             GameActivity.this.startActivity(toGameOver);
 
